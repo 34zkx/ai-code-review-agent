@@ -1,0 +1,17 @@
+{
+  "name": "ai-code-review-agent",
+  "version": "1.0.0",
+  "description": "Multi-agent code review and documentation generation system",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "review": "ts-node src/index.ts review",
+    "doc-gen": "ts-node src/index.ts doc-gen"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.52.0",
+    "glob": "^10.3.10",
+    "typescript": "^5.4.0",
+    "ts-node": "^10.9.2"
+  }
+}

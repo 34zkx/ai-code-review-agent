@@ -1,0 +1,41 @@
+$ npm run review ./src
+
+> ai-code-review-agent@1.0.0 review
+> ts-node src/index.ts review ./src
+
+[Orchestrator] Analyzing scope of ./src ...
+[Orchestrator] Scope analysis complete (tokens: in=412, out=287, cached=0)
+[Orchestrator] Dispatching to ReviewAgent ...
+
+[ReviewAgent] Scanning files matching **/*.{ts,js,py,go}
+[ReviewAgent] Found 37 source files (node_modules/dist excluded)
+[ReviewAgent] [1/37] Reviewing src/agents/base.ts ...
+  └─ tokens in=1823 out=612 cached=1720
+[ReviewAgent] [2/37] Reviewing src/agents/orchestrator.ts ...
+  └─ tokens in=2104 out=548 cached=1720
+[ReviewAgent] [3/37] Reviewing src/agents/review-agent.ts ...
+  └─ tokens in=1967 out=702 cached=1720
+[ReviewAgent] [4/37] Reviewing src/agents/doc-agent.ts ...
+  └─ tokens in=1891 out=634 cached=1720
+...
+[ReviewAgent] [37/37] Reviewing src/utils/fs-helpers.ts ...
+  └─ tokens in=1445 out=401 cached=1720
+
+[ReviewAgent] Aggregating 37 reviews into priority action list ...
+  └─ tokens in=28476 out=3102 cached=1720
+
+[Orchestrator] Validating output ...
+[Orchestrator] Output size: 47.2 KB, status: PASS
+
+===== SUMMARY =====
+Files reviewed:       37
+Critical issues:       3  (SQL injection in query builder, hardcoded secret, missing auth check)
+High issues:          11
+Medium issues:        24
+Low issues:           58
+Total tokens used:    412,847   (input: 298,412 / output: 114,435)
+Cache hit rate:       87.3%
+Wall time:            4m 12s
+Cost estimate:        $1.82
+
+Report written to: ./review-report-2026-05-13.md
